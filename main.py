@@ -3,14 +3,14 @@ import re
 import asyncio
 
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime
 from xml.etree import ElementTree as ET
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import BotCommand, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters.callback_data import CallbackData
 
-# базовая настройка логирования
+# Логирование
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -18,14 +18,14 @@ logger = logging.getLogger(__name__)
 TOKEN = "8436005748:AAEJaC4TKd8MOkRJmCkNcT6K_pRUh7z_wOA"
 MY_ER_BASE = "https://cbr.ru/scripts/XML_daily.asp"
 
-# выбранная пользователем дата (если None — берётся текущая)
+# выбранная пользователем дата (None — текущая)
 selected_date = None
 
-# экземпляры бота и диспетчера aiogram
+
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-# callback‑данные для inline‑кнопок меню
+# кнопоки меню
 class MenuCallback(CallbackData, prefix="menu"):
     action: str
 
